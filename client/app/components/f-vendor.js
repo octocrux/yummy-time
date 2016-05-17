@@ -24,8 +24,17 @@ const Validations = buildValidations({
 export default Ember.Component.extend(Validations, {
   didValidate: false,
 
+  makeUrl() {
+    const urlPattern = /^https?:\/\//;
+    const vendorUrl = this.get('url');
+    if (!vendorUrl.match(urlPattern)) {
+      this.set('url', `http://${vendorUrl}`);
+    }
+  },
+
   actions: {
     submit() {
+      this.makeUrl();
       this.validate().then(({ validations }) => {
         if (validations.get('isValid')) {
           this.attrs.submit(
