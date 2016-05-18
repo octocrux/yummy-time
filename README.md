@@ -7,13 +7,26 @@
 - Clone the repository:
 
   ```sh
-  git clone git@github.com:yandex-shri-minsk-2016/yummy-time.git
+  git clone git@github.com:octocrux/yummy-time.git
   ```
+
+### Before you start
+
+- Sensitive data like passwords or secret tokens is not stored in the repository,
+so you'll have to make some preparations before the project can be launched.
+Replace config variables in [envconfig.sh](devops/envconfig.sh) with correct
+values and then source the file to your working environment:
+
+  ```sh
+  . ./devops/envconfig.sh
+  ```
+
+### Setup project
 
 - Install node and bower dependencies:
 
   ```sh
-  npm install
+  npm i
   ```
 
 - Run mongod:
@@ -37,14 +50,13 @@
 - Open the application in your browser:
 
   ```sh
-  open http://localhost:4200
+  open http://127.0.0.1:4200
   ```
 
 - Build the application for different environments:
 
   ```sh
   npm run build       # => development
-  npm run build-prod  # => production
   ```
 
 - Deploy application to Heroku:
