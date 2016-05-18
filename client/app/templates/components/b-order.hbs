@@ -9,14 +9,14 @@
     {{/each}}
   </ul>
 
-  <div class="b-order__actions">
+  <div class="f-default__row">
     <button {{action "toggleActiveState"}} class="button _submit">
-      {{#if order.active}}Заблокировать<br>заказ{{else}}Разблокировать<br>заказ{{/if}}
+      {{#if order.active}}Заблокировать заказ{{else}}Разблокировать заказ{{/if}}
     </button>
-    {{#link-to 'checkout' order.id class="button _submit"}}
-      Уведомить пользователей
-    {{/link-to}}
   </div>
-</div>
 
+  {{f-checkout submit=(action 'send') order=order}}
+
+</div>
 {{#link-to "new-portion-order" order.id aria-label="add new portion" class="btn-new-order"}}{{/link-to}}
+
