@@ -65,6 +65,9 @@ exports.callback = function(req, res) {
           loadOrCreateAccount(tokens.access_token, tokens.refresh_token,
                               // eslint-disable-next-line no-shadow
                               payload, (err, account) => {
+                                if (err) {
+                                  res.json(err);
+                                }
                                 if (account) {
                                   res.json(createAccessToken(account));
                                 }
