@@ -18,4 +18,9 @@ export YUMMY_USER="" # database username
 export YUMMY_PASSWORD="" # database password
 #
 # Secret token used for authentication. Can be anything
-export SECRET="secret"
+export SECRET="" # e.g. "secret"
+
+# Required for deployment scripts
+#
+export SERVER_REPO="" # heroku git repository for server application
+export CLIENT_REPO="" # heroku git repository for client application
