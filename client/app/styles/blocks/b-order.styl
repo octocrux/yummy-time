@@ -1,6 +1,8 @@
 .b-order
   color $c-light
   margin 0 auto
+  overflow-y auto
+  max-height calc(100vh - 200px)
 
   &__description
     margin-bottom 20px
@@ -10,8 +12,6 @@
 
   &__content
     margin-bottom 20px
-    overflow-y auto
-    max-height calc(100vh - 280px)
 
     @media $max767
       max-height calc(100vh - 215px)
