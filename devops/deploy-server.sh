@@ -12,6 +12,11 @@ if [[ $TMPD == $PROJ ]]; then
   exit 1
 fi
 
+if [[ ! $SERVER_REPO ]]; then
+  echo 'Heroku server repository not set'
+  exit 1
+fi
+
 rm -rf server/
 mkdir server
 
@@ -28,7 +33,7 @@ cd $TMPSERVER
 git init
 git add --all
 git commit -m 'Deploy Server'
-git remote add server 'https://git.heroku.com/yummy-server.git'
+git remote add server $SERVER_REPO
 git push server master --force
 
 exit
