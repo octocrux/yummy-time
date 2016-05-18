@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = {
-  db: `mongodb://${process.env.YUMMY_USER}:${process.env.YUMMY_PASSWORD}@ds011382.mlab.com:11382/yummydb`,
-  port: process.env.PORT || 3000,
-  originURL: 'https://yummy-time.herokuapp.com',
-  secret: 'secret',
+  db: `mongodb://${process.env.YUMMY_USER}:${process.env.YUMMY_PASSWORD}@${process.env.YUMMY_DB}`,
+  port: process.env.PORT,
+  originURL: process.env.CLIENT_URL,
+  secret: process.env.SECRET,
   google: {
-    // eslint-disable-next-line max-len
-    clientID: process.env.GOOGLE_CLIENTID || '1071029381615-tucu38j7kboh2kk4f8tj9br832gihl03.apps.googleusercontent.com',
-    clientSecret: process.env.GOOGLE_SECRET || 'mAgQY2Z9TPJzFGEGkQjU1-37',
-    callbackURL: 'https://yummy-time.herokuapp.com'
-  }
+    clientID: process.env.GOOGLE_CLIENTID,
+    clientSecret: process.env.GOOGLE_SECRET,
+    callbackURL: process.env.CLIENT_URL
+  },
+  smtp: process.env.YUMMY_SMTP
 };

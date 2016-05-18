@@ -4,7 +4,9 @@ module.exports = function(environment) {
   const ENV = {
     modulePrefix: 'client',
     environment,
-    host: 'http://localhost:3000',
+    host: process.env.SERVER_URL,
+    host_client: process.env.CLIENT_URL,
+    host_server: process.env.SERVER_URL,
     baseURL: '/',
     locationType: 'auto',
     namespace: '',
@@ -26,7 +28,7 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint: `${ENV.host}/auth/token`,
+    serverTokenEndpoint: `${ENV.host_server}/auth/token`,
     authorizationPrefix: 'JWT ',
     identificationField: 'email',
     passwordField: 'password'
@@ -36,8 +38,8 @@ module.exports = function(environment) {
     sessionServiceName: 'session',
     providers: {
       'google-oauth2': {
-        apiKey: '1071029381615-tucu38j7kboh2kk4f8tj9br832gihl03.apps.googleusercontent.com',
-        redirectUri: 'http://127.0.0.1:4200',
+        apiKey: process.env.GOOGLE_CLIENTID,
+        redirectUri: ENV.host_client,
         accessType: 'offline'
       }
     }
@@ -48,10 +50,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-
-    // eslint-disable-next-line no-console
-    console.log('dev');
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {
@@ -66,15 +65,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.host = 'https://yummy-time.herokuapp.com';
-    ENV.namespace = '/api/v1';
-    ENV['ember-simple-auth-token'].serverTokenEndpoint = `${ENV.namespace}/auth/token`;
-    ENV.torii.providers['google-oauth2'].redirectUri = ENV.host;
-
-    // eslint-disable-next-line no-console
-    console.log(`API Namespace: ${ENV.namespace}`);
-    // eslint-disable-next-line no-console
-    console.log('prod');
+    ENV.namespace = 'api/v1';
+    ENV.host = ENV.host_client;
   }
 
   return ENV;

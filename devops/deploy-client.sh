@@ -12,6 +12,11 @@ if [[ $TMPD == $PROJ ]]; then
   exit 1
 fi
 
+if [[ ! $CLIENT_REPO ]]; then
+  echo 'Heroku client repository not set'
+  exit 1
+fi
+
 rm -rf client/
 mkdir client
 
@@ -30,7 +35,7 @@ cd $TMPCLIENT
 git init
 git add --all
 git commit -m 'Deploy Client'
-git remote add client 'https://git.heroku.com/yummy-time.git'
+git remote add client $CLIENT_REPO
 git push client master --force
 
 exit
