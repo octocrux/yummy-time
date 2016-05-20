@@ -24,3 +24,7 @@ export SECRET="" # e.g. "secret"
 #
 export SERVER_REPO="" # heroku git repository for server application
 export CLIENT_REPO="" # heroku git repository for client application
+#
+# Airbrake error report service credentials
+export AIRBRAKE_PID=""  # projectId
+export AIRBRAKE_PKEY="" # projectKey
