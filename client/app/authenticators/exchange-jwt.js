@@ -8,7 +8,7 @@ export default TokenAuthenticator.extend({
   authenticate(provider, data) {
     const ajax = this.get('ajax');
 
-    return ajax.request(`${ENV.host_server}/auth/${provider}`, {
+    return ajax.request(`${ENV.hostServer}/auth/${provider}`, {
       type: 'POST',
       dataType: 'json',
       data: { code: data.authorizationCode }
