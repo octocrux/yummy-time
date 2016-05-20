@@ -67,6 +67,10 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.namespace = 'api/v1';
     ENV.host = ENV.hostClient;
+    ENV.airbrake = {
+      projectId: process.env.AIRBRAKE_PID,
+      projectKey: process.env.AIRBRAKE_PKEY
+    };
   }
 
   return ENV;
