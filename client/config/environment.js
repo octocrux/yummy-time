@@ -5,8 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'client',
     environment,
     host: process.env.SERVER_URL,
-    host_client: process.env.CLIENT_URL,
-    host_server: process.env.SERVER_URL,
+    hostClient: process.env.CLIENT_URL,
+    hostServer: process.env.SERVER_URL,
     baseURL: '/',
     locationType: 'auto',
     namespace: '',
@@ -28,7 +28,7 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint: `${ENV.host_server}/auth/token`,
+    serverTokenEndpoint: `${ENV.hostServer}/auth/token`,
     authorizationPrefix: 'JWT ',
     identificationField: 'email',
     passwordField: 'password'
@@ -39,7 +39,7 @@ module.exports = function(environment) {
     providers: {
       'google-oauth2': {
         apiKey: process.env.GOOGLE_CLIENTID,
-        redirectUri: ENV.host_client,
+        redirectUri: ENV.hostClient,
         accessType: 'offline'
       }
     }
@@ -66,7 +66,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.namespace = 'api/v1';
-    ENV.host = ENV.host_client;
+    ENV.host = ENV.hostClient;
   }
 
   return ENV;
