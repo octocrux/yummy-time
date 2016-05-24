@@ -8,9 +8,7 @@ export default Ember.Controller.extend({
   actions: {
     authenticateVia(provider) {
       this.get('torii').open(provider).then((data) => {
-        this.get('session').authenticate('authenticator:exchange-jwt', provider, data).then(() => {
-          this.transitionToRoute('orders');
-        });
+        this.get('session').authenticate('authenticator:exchange-jwt', provider, data);
       });
     },
 
@@ -22,7 +20,6 @@ export default Ember.Controller.extend({
         })
         .then(() => {
           this.set('errorMessage', null);
-          this.transitionToRoute('orders');
         })
         .catch((reason) => {
           this.set('errorMessage', reason.message || reason);
