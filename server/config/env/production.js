@@ -10,5 +10,6 @@ module.exports = {
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.CLIENT_URL
   },
-  smtp: process.env.YUMMY_SMTP
+  smtp: process.env.YUMMY_SMTP,
+  systemEmail: process.env.SYSTEM_EMAIL
 };

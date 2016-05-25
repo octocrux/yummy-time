@@ -14,6 +14,8 @@ function sendEmail(email, message) {
     subject: 'Notification',
     text: message
   };
+  // eslint-disable-next-line no-console
+  console.log('mailOptions: ', mailOptions);
 
   transporter.verify(error => {
     if (error) {
@@ -21,7 +23,7 @@ function sendEmail(email, message) {
       console.log(error);
     } else {
       transporter.sendMail(mailOptions, (sendError, info) => {
-        if (error) {
+        if (sendError) {
           // eslint-disable-next-line no-console
           console.log(sendError);
         } else {
