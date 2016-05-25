@@ -2,6 +2,7 @@
 
 const API = require('json-api');
 const models = {
+  Notification: require('../models/notification'),
   Order: require('../models/order'),
   Account: require('../models/account'),
   Vendor: require('../models/vendor'),
@@ -10,6 +11,7 @@ const models = {
 
 const adapter = new API.dbAdapters.Mongoose(models);
 const registry = new API.ResourceTypeRegistry({
+  notifications: require('./api/resource-descriptions/notification'),
   orders: require('./api/resource-descriptions/order'),
   accounts: require('./api/resource-descriptions/account'),
   portions: require('./api/resource-descriptions/portion'),
