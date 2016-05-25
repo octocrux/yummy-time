@@ -1,8 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  messageConstructor: Ember.inject.service('message-constructor'),
+
   createNotification(order) {
-    const message = 'New order created!';
+    const message = this.get('messageConstructor').slackOrderCreated(order);
 
     const notification = this.store.createRecord('notification');
     notification.set('order', order);
