@@ -19,16 +19,32 @@ notificationSchema.pre('save', function(next) {
       console.log('Account not found');
     } else {
       // eslint-disable-next-line no-console
-      console.log('Manager name: ', manager.name);
+      if (manager['slack-hook']) {
+        const webhook = manager['slack-hook'];
+        let channelName = '#general';
+        if (manager['slack-channel']) {
+          channelName = `#${manager['slack-channel']}`;
+        }
+        const slack = new Slack(webhook);
+
+        slack.send({
+          text: this.text,
+          channel: channelName,
+          username: 'Yummy-Bot'
+        });
+      } else {
+        // eslint-disable-next-line no-console
+        console.log('No Webhooks specified');
+      }
     }
   });
 
   const slack = new Slack(process.env.SLACK_WEBHOOK);
-
   slack.send({
     text: this.text,
     channel: '#yummy-channel',
-    username: 'YummyBot' });
+    username: 'YummyBot'
+  });
 
   next();
 });

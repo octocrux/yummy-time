@@ -10,6 +10,8 @@ const accountSchema = new mongoose.Schema({
   name: { type: String, default: '' },
   email: { type: String, default: '' },
   phone: { type: String, default: '' },
+  'slack-hook': { type: String, default: '' },
+  'slack-channel': { type: String, default: '' },
   hashed_password: { type: String, default: '' },
   provider: { type: String, default: '' },
   google: {
