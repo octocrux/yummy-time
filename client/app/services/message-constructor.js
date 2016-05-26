@@ -10,8 +10,7 @@ export default Ember.Service.extend({
     let message = '';
 
     message += `Создан новый заказ на ${time} в <${vendorUrl}|${vendor}>\n`;
-    message += 'Можно присоединиться здесь:\n';
-    message += `${ENV.hostClient}/orders/${id}`;
+    message += `<${ENV.hostClient}/orders/${id}|Присоединяйтесь!>`;
 
     return message;
   }
