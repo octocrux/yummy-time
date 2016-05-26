@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 
 const notificationSchema = new Schema({
   text: { type: String, required: true },
+  manager: { ref: 'Account', type: Schema.ObjectId },
   order: { ref: 'Order', type: Schema.ObjectId }
 });
 
