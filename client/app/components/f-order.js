@@ -24,6 +24,7 @@ export default Ember.Component.extend(Validations, {
     },
 
     logClick(targetUrl) {
+      // TODO: find a better way
       window.location.replace(targetUrl);
     },
 
