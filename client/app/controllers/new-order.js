@@ -3,11 +3,12 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   messageConstructor: Ember.inject.service('message-constructor'),
 
-  createNotification(order) {
+  createNotification(order, account) {
     const message = this.get('messageConstructor').slackOrderCreated(order);
 
     const notification = this.store.createRecord('notification');
     notification.set('order', order);
+    notification.set('manager', account);
     notification.set('text', message);
     notification.save();
   },
@@ -19,7 +20,7 @@ export default Ember.Controller.extend({
       order.set('manager', account);
       order.set('money.required', vendor.get('minOrderCost'));
       order.save().then(() => {
-        this.createNotification(order);
+        this.createNotification(order, account);
       });
 
       this.transitionToRoute('orders');
