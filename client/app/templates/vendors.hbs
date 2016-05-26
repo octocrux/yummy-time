@@ -5,8 +5,7 @@
         <span class="b-vendors__title">{{vendor.title}}</span>
         <span class="b-vendors__cost">Минимальная сумма заказа {{vendor.minOrderCost}}</span>
       </div>
-      <a href="{{vendor.url}}" target="_blank"
-         class="b-vendors__link">{{vendor.url}}</a>
+      <a href="{{vendor.url}}" class="b-vendors__link" {{action "logClick" vendor.url}}>{{vendor.url}}</a>
     </li>
   {{/each}}
 </ul>
