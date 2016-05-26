@@ -23,6 +23,10 @@ export default Ember.Component.extend(Validations, {
       this.set('vendor', vendor);
     },
 
+    logClick(targetUrl) {
+      window.location.replace(targetUrl);
+    },
+
     submit() {
       this.validate().then(({ validations }) => {
         if (validations.get('isValid')) {
