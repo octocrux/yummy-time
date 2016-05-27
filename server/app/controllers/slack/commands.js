@@ -23,5 +23,6 @@ exports.help = function() {
 
 exports.orders = function() {
   return Order.find({ active: true }).exec()
-    .then(orders => orders.map(order => `Order at: ${order.time}\n`).join(''));
+    .then(orders => orders.map(order => `Order at: ${order.time}\n`).join(''))
+    .then(message => 'Active orders:\n'.concat(message));
 };
