@@ -1,15 +1,17 @@
 'use strict';
 
+const Commands = require('./commands');
+
 function extractCommand(text) {
   if (!text) {
     return 'Error in command text';
   }
 
   if (text.includes('help')) {
-    return 'help command';
+    return Commands.help();
   }
   if (text.includes('orders')) {
-    return 'orders command';
+    return Commands.orders();
   }
 };
 
