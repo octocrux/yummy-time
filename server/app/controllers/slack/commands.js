@@ -1,5 +1,7 @@
 'use strict';
 
+const Order = require('../../models/order');
+
 exports.error = function() {
   let errorText = 'Wrong command. Type */yummy help* \n';
   errorText += 'to see the list of available commands';
@@ -20,10 +22,11 @@ exports.help = function() {
 };
 
 exports.orders = function() {
-  let ordersText = '';
-  ordersText += 'This is a command for getting order list';
-
-  return new Promise((resolve) => {
-    resolve(ordersText);
-  });
+  return Order.find({ active: true })
+    .exec()
+    .then((orders) => {
+      return orders.map((order) => {
+        return `Order at: ${order.time}\n`;
+      }).join('');
+    });
 };
