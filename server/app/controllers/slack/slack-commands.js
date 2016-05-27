@@ -23,8 +23,8 @@ exports.callback = function(req, res) {
     // eslint-disable-next-line no-console
     console.log(req.body);
     const command = extractCommand(req.body.text);
-    // eslint-disable-next-line no-console
-    console.log(command);
-    res.send(command);
+    command.then((commandText) => {
+      res.send(commandText);
+    });
   }
 };

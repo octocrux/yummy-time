@@ -4,7 +4,9 @@ exports.error = function() {
   let errorText = 'Wrong command. Type */yummy help* \n';
   errorText += 'to see the list of available commands';
 
-  return errorText;
+  return new Promise((resolve) => {
+    resolve(errorText);
+  });
 };
 
 exports.help = function() {
@@ -12,12 +14,16 @@ exports.help = function() {
   helpText += 'type */yummy orders* to get list of Active orders\n';
   helpText += 'type */yummy help* to get this message';
 
-  return helpText;
+  return new Promise((resolve) => {
+    resolve(helpText);
+  });
 };
 
 exports.orders = function() {
   let ordersText = '';
   ordersText += 'This is a command for getting order list';
 
-  return ordersText;
+  return new Promise((resolve) => {
+    resolve(ordersText);
+  });
 };
