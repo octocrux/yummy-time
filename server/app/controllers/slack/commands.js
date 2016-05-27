@@ -1,6 +1,7 @@
 'use strict';
 
 const Order = require('../../models/order');
+const Messages = require('./messages');
 
 exports.error = function() {
   let errorText = 'Команда не распознана. Введите */yummy help* \n';
@@ -23,6 +24,6 @@ exports.help = function() {
 
 exports.orders = function() {
   return Order.find({ active: true }).populate('manager vendor').exec()
-    .then(orders => orders.map(order => `Заказ в ${order.time}`).join(''))
+    .then(orders => orders.map(order => Messages.orderInfo(order)).join(''))
     .then(message => 'Активные заказы:\n'.concat(message));
 };
