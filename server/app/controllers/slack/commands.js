@@ -3,8 +3,8 @@
 const Order = require('../../models/order');
 
 exports.error = function() {
-  let errorText = 'Wrong command. Type */yummy help* \n';
-  errorText += 'to see the list of available commands';
+  let errorText = 'Команда не распознана. Введите */yummy help* \n';
+  errorText += 'для отображения списка доступных комманд';
 
   return new Promise((resolve) => {
     resolve(errorText);
@@ -13,8 +13,8 @@ exports.error = function() {
 
 exports.help = function() {
   let helpText = '';
-  helpText += 'type */yummy orders* to get list of Active orders\n';
-  helpText += 'type */yummy help* to get this message';
+  helpText += '*/yummy orders* - получить список активных заказов\n';
+  helpText += '*/yummy help* - получить список доступных комманд';
 
   return new Promise((resolve) => {
     resolve(helpText);
@@ -22,7 +22,7 @@ exports.help = function() {
 };
 
 exports.orders = function() {
-  return Order.find({ active: true }).exec()
-    .then(orders => orders.map(order => `Order at: ${order.time}\n`).join(''))
-    .then(message => 'Active orders:\n'.concat(message));
+  return Order.find({ active: true }).populate('manager vendor').exec()
+    .then(orders => orders.map(order => `Заказ в ${order.time}`).join(''))
+    .then(message => 'Активные заказы:\n'.concat(message));
 };
