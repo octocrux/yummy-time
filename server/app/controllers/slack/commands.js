@@ -1,7 +1,7 @@
 'use strict';
 
 exports.error = function() {
-  let errorText = 'Wrong command. Type *\/yummy help* \n';
+  let errorText = 'Wrong command. Type */yummy help* \n';
   errorText += 'to see the list of available commands';
 
   return errorText;
@@ -9,8 +9,8 @@ exports.error = function() {
 
 exports.help = function() {
   let helpText = '';
-  helpText += 'type *\/yummy orders* to get list of Active orders\n';
-  helpText += 'type *\/yummy help* to get this message';
+  helpText += 'type */yummy orders* to get list of Active orders\n';
+  helpText += 'type */yummy help* to get this message';
 
   return helpText;
 };
