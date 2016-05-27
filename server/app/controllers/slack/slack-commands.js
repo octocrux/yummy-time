@@ -18,7 +18,7 @@ exports.callback = function(req, res) {
   if (!req.body) {
     // eslint-disable-next-line no-console
     console.log('Error on parsing request body');
-    res.send('Could not parse request body');
+    res.send('Не удалось прочитать команду');
   } else {
     // eslint-disable-next-line no-console
     console.log(req.body);
