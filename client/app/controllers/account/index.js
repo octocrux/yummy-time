@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   actions: {
     updateAccount(account) {
       account.save();
+      this.transitionToRoute('orders');
     }
   }
 });
